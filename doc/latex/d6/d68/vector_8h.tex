@@ -1,0 +1,146 @@
+\hypertarget{vector_8h}{}\section{/\+Users/rafael/\+Dropbox/sphene/src/vector.h File Reference}
+\label{vector_8h}\index{/\+Users/rafael/\+Dropbox/sphene/src/vector.\+h@{/\+Users/rafael/\+Dropbox/sphene/src/vector.\+h}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$cstdio$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+Include dependency graph for vector.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ double $>$ \hyperlink{vector_8h_ae0eee580b35f24257e6bbb5f496eaed6}{operator+} (const vector$<$ double $>$ \&, const vector$<$ double $>$ \&)
+\item 
+vector$<$ double $>$ \hyperlink{vector_8h_a88bd91144ab10720a83759ec3426da49}{operator-\/} (const vector$<$ double $>$ \&, const vector$<$ double $>$ \&)
+\item 
+vector$<$ double $>$ \hyperlink{vector_8h_ac79b1ee25334c85731fe171e12af076d}{operator$\ast$} (const double \&, const vector$<$ double $>$ \&)
+\item 
+double \hyperlink{vector_8h_a7a8848a31ce4d828ab072016f64064f4}{operator$\ast$} (const vector$<$ double $>$ \&, const vector$<$ double $>$ \&)
+\item 
+double \hyperlink{vector_8h_a4dd0a6d5fb081a2fb2868d04493d60bb}{norm\+Of} (const vector$<$ double $>$ \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{vector_8h_a4dd0a6d5fb081a2fb2868d04493d60bb}{}\index{vector.\+h@{vector.\+h}!norm\+Of@{norm\+Of}}
+\index{norm\+Of@{norm\+Of}!vector.\+h@{vector.\+h}}
+\subsubsection[{norm\+Of}]{\setlength{\rightskip}{0pt plus 5cm}double norm\+Of (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{}
+\end{DoxyParamCaption}
+)}\label{vector_8h_a4dd0a6d5fb081a2fb2868d04493d60bb}
+Function to calculates the norm of a vector 
+
+Referenced by S\+P\+H\+Particle\+::\+Gamma(), Kernel\+Function\+::kernel\+Function(), and Kernel\+Function\+::kernel\+Gradient().
+
+
+\begin{DoxyCode}
+64 \{
+65   \textcolor{keywordtype}{double} size = r.size();
+66   \textcolor{keywordtype}{double} sum = 0.0;
+67 
+68   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; i++)
+69     sum += r[i] * r[i];
+70 
+71   \textcolor{keywordflow}{return} sqrt(sum);
+72 \}
+\end{DoxyCode}
+\hypertarget{vector_8h_ac79b1ee25334c85731fe171e12af076d}{}\index{vector.\+h@{vector.\+h}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!vector.\+h@{vector.\+h}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{, }
+\item[{const vector$<$ double $>$ \&}]{}
+\end{DoxyParamCaption}
+)}\label{vector_8h_ac79b1ee25334c85731fe171e12af076d}
+Overloading the times ($\ast$) operator to define the multiplication of a escalar (double) and a vector. 
+\begin{DoxyCode}
+40 \{
+41   vector<double> result(x.size());
+42   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < x.size(); i++)
+43     result[i] = K * x[i];
+44 
+45   \textcolor{keywordflow}{return} result;
+46 \}
+\end{DoxyCode}
+\hypertarget{vector_8h_a7a8848a31ce4d828ab072016f64064f4}{}\index{vector.\+h@{vector.\+h}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!vector.\+h@{vector.\+h}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}double operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{, }
+\item[{const vector$<$ double $>$ \&}]{}
+\end{DoxyParamCaption}
+)}\label{vector_8h_a7a8848a31ce4d828ab072016f64064f4}
+Overloading the times($\ast$) operator to define the escalar product between two vectors. 
+\begin{DoxyCode}
+49 \{
+50   \textcolor{keywordtype}{double} result = 0;
+51 
+52   \textcolor{keywordflow}{if} (a.size() != b.size())\{
+53     cerr << \textcolor{stringliteral}{"Vector innerProduct Error: Vectors with different dimensions!"};
+54     exit(-1);
+55   \}
+56 
+57   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < a.size(); i++)
+58     result += a[i] * b[i];
+59 
+60   \textcolor{keywordflow}{return} result;
+61 \}
+\end{DoxyCode}
+\hypertarget{vector_8h_ae0eee580b35f24257e6bbb5f496eaed6}{}\index{vector.\+h@{vector.\+h}!operator+@{operator+}}
+\index{operator+@{operator+}!vector.\+h@{vector.\+h}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ operator+ (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{, }
+\item[{const vector$<$ double $>$ \&}]{}
+\end{DoxyParamCaption}
+)}\label{vector_8h_ae0eee580b35f24257e6bbb5f496eaed6}
+Overloading the plus (+) operator to define the summation of two vectors. 
+\begin{DoxyCode}
+22 \{
+23   \textcolor{keywordtype}{double} size;
+24   size = r1.size();
+25 
+26   \textcolor{keywordflow}{if}(r1.size() != r2.size()) \{
+27     cerr << \textcolor{stringliteral}{"Vector Sumation Error: Vectors with different dimensions!"};
+28     exit(-1);
+29   \}
+30 
+31   vector<double> r3 (size,0);
+32 
+33   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < int(r3.size()); i++)
+34     r3[i] = r1[i] + r2[i];
+35 
+36   \textcolor{keywordflow}{return} r3;
+37 \}
+\end{DoxyCode}
+\hypertarget{vector_8h_a88bd91144ab10720a83759ec3426da49}{}\index{vector.\+h@{vector.\+h}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!vector.\+h@{vector.\+h}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{, }
+\item[{const vector$<$ double $>$ \&}]{}
+\end{DoxyParamCaption}
+)}\label{vector_8h_a88bd91144ab10720a83759ec3426da49}
+Overloading the minus (-\/) operator to define the subtraction of two vectors. 
+\begin{DoxyCode}
+4 \{
+5   \textcolor{keywordtype}{double} size;
+6   size = r1.size();
+7 
+8   \textcolor{keywordflow}{if}(r1.size() != r2.size()) \{
+9     cerr << \textcolor{stringliteral}{"Vector Subtraction Error: Vectors with different dimensions!"};
+10     exit(-1);
+11   \}
+12 
+13   vector<double> r3 (size,0);
+14 
+15   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < int(r3.size()); i++)
+16     r3[i] = r1[i] - r2[i];
+17 
+18   \textcolor{keywordflow}{return} r3;
+19 \}
+\end{DoxyCode}

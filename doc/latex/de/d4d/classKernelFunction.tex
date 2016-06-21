@@ -1,0 +1,94 @@
+\hypertarget{classKernelFunction}{}\section{Kernel\+Function Class Reference}
+\label{classKernelFunction}\index{Kernel\+Function@{Kernel\+Function}}
+
+
+{\ttfamily \#include $<$kernel\+Function.\+h$>$}
+
+
+
+Collaboration diagram for Kernel\+Function\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classKernelFunction_af6b299411c5cf913c03b919f9f691fa7}{kernel\+Function} (vector$<$ double $>$)
+\item 
+vector$<$ double $>$ \hyperlink{classKernelFunction_af1d85508aa97180bd5a430cbd48e379d}{kernel\+Gradient} (vector$<$ double $>$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classKernelFunction_af6b299411c5cf913c03b919f9f691fa7}{}\index{Kernel\+Function@{Kernel\+Function}!kernel\+Function@{kernel\+Function}}
+\index{kernel\+Function@{kernel\+Function}!Kernel\+Function@{Kernel\+Function}}
+\subsubsection[{kernel\+Function}]{\setlength{\rightskip}{0pt plus 5cm}double Kernel\+Function\+::kernel\+Function (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{r}
+\end{DoxyParamCaption}
+)}\label{classKernelFunction_af6b299411c5cf913c03b919f9f691fa7}
+
+
+References H, norm\+Of(), and W.
+
+
+
+Referenced by S\+P\+H\+Equation\+::entropy\+Star(), and T\+E\+S\+T().
+
+
+\begin{DoxyCode}
+13                                                       \{
+14 
+15     \textcolor{keywordtype}{double} a;
+16     \textcolor{keywordtype}{double} q;
+17 
+18     a = \hyperlink{vector_8cpp_a4f98b1abbe572c89f3a026dc052476d1}{normOf}(r);
+19     q = a/\hyperlink{kernelFunction_8cpp_ad7cd26dc1ce30ff209c71b309a3134e6}{H};
+20 
+21     \textcolor{keywordflow}{if} (q > 2)
+22         \textcolor{keywordflow}{return} 0;
+23     \textcolor{keywordflow}{if} (q >= 1)
+24         \textcolor{keywordflow}{return} \hyperlink{kernelFunction_8cpp_a78df7264eec7e39b205a772c2f44597d}{W} * 0.25 * (pow(2 - q, 3));
+25 
+26     \textcolor{keywordflow}{return} \hyperlink{kernelFunction_8cpp_a78df7264eec7e39b205a772c2f44597d}{W} * (1 - (1.5 * q * q) + (0.75 * q * q * q));
+27 \}
+\end{DoxyCode}
+\hypertarget{classKernelFunction_af1d85508aa97180bd5a430cbd48e379d}{}\index{Kernel\+Function@{Kernel\+Function}!kernel\+Gradient@{kernel\+Gradient}}
+\index{kernel\+Gradient@{kernel\+Gradient}!Kernel\+Function@{Kernel\+Function}}
+\subsubsection[{kernel\+Gradient}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ Kernel\+Function\+::kernel\+Gradient (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{r}
+\end{DoxyParamCaption}
+)}\label{classKernelFunction_af1d85508aa97180bd5a430cbd48e379d}
+
+
+References G\+R\+A\+D\+\_\+\+W, H, and norm\+Of().
+
+
+
+Referenced by S\+P\+H\+Equation\+::d\+Momentum\+\_\+d\+Tau().
+
+
+\begin{DoxyCode}
+30                                                                \{
+31 
+32     \textcolor{keywordtype}{double} a = \hyperlink{vector_8cpp_a4f98b1abbe572c89f3a026dc052476d1}{normOf}(r);
+33     \textcolor{keywordtype}{double} q = a/\hyperlink{kernelFunction_8cpp_ad7cd26dc1ce30ff209c71b309a3134e6}{H};
+34     vector<double> zero (2, 0.0);
+35     vector<double> oneOverR(2, 0.0);
+36 
+37     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 2; i++)
+38       oneOverR[i] = 1/(r[i]);
+39 
+40     \textcolor{keywordflow}{if} (q > 2)
+41         \textcolor{keywordflow}{return} zero;
+42     \textcolor{keywordflow}{if} (q > 1)
+43         \textcolor{keywordflow}{return} ((\hyperlink{kernelFunction_8cpp_a84f5b5bfdaf1754c00f1ec54caf7b89a}{GRAD\_W} / a) * (2 - q) * (2 - q)) * r;
+44 
+45     \textcolor{keywordflow}{return} (\hyperlink{kernelFunction_8cpp_a4c118180666cc78f59e06ba38663e5f3}{GRAD\_W\_2} * (-3 + 9 * q/4.)) * r;
+46 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/rafael/\+Dropbox/sphene/src/\hyperlink{kernelFunction_8h}{kernel\+Function.\+h}\item 
+/\+Users/rafael/\+Dropbox/sphene/src/\hyperlink{kernelFunction_8cpp}{kernel\+Function.\+cpp}\end{DoxyCompactItemize}

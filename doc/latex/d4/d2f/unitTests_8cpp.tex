@@ -1,0 +1,74 @@
+\hypertarget{unitTests_8cpp}{}\section{/\+Users/rafael/\+Dropbox/\+C\+Plus\+Plus\+Seed/test/unit\+Tests.cpp File Reference}
+\label{unitTests_8cpp}\index{/\+Users/rafael/\+Dropbox/\+C\+Plus\+Plus\+Seed/test/unit\+Tests.\+cpp@{/\+Users/rafael/\+Dropbox/\+C\+Plus\+Plus\+Seed/test/unit\+Tests.\+cpp}}
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}../src/math\+Examples.\+cpp\char`\"{}}\\*
+Include dependency graph for unit\+Tests.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{unitTests_8cpp_a7f12bbd6cf7b7f144a9945e864c37620}{T\+E\+S\+T} (divide\+Function, commmon\+Divide)
+\item 
+\hyperlink{unitTests_8cpp_a0ec0e4fb4ff8f84b66192106507f7df1}{T\+E\+S\+T} (divide\+Function, divide\+By\+Zero)
+\item 
+int \hyperlink{unitTests_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{unitTests_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\index{unit\+Tests.\+cpp@{unit\+Tests.\+cpp}!main@{main}}
+\index{main@{main}!unit\+Tests.\+cpp@{unit\+Tests.\+cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{unitTests_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+\begin{DoxyCode}
+27 \{
+28   ::testing::InitGoogleTest(&argc, argv);
+29   \textcolor{keywordflow}{return} RUN\_ALL\_TESTS();
+30 \}
+\end{DoxyCode}
+\hypertarget{unitTests_8cpp_a7f12bbd6cf7b7f144a9945e864c37620}{}\index{unit\+Tests.\+cpp@{unit\+Tests.\+cpp}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!unit\+Tests.\+cpp@{unit\+Tests.\+cpp}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{divide\+Function}]{, }
+\item[{commmon\+Divide}]{}
+\end{DoxyParamCaption}
+)}\label{unitTests_8cpp_a7f12bbd6cf7b7f144a9945e864c37620}
+
+
+References Math\+Function\+::divide().
+
+
+\begin{DoxyCode}
+10 \{
+11   \hyperlink{classMathFunction}{MathFunction} mathFuncion;
+12 
+13   ASSERT\_EQ(mathFuncion.\hyperlink{classMathFunction_ad89df1337766a1314d65f581f070a8c0}{divide}(10,2), 5);
+14 \}
+\end{DoxyCode}
+\hypertarget{unitTests_8cpp_a0ec0e4fb4ff8f84b66192106507f7df1}{}\index{unit\+Tests.\+cpp@{unit\+Tests.\+cpp}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!unit\+Tests.\+cpp@{unit\+Tests.\+cpp}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{divide\+Function}]{, }
+\item[{divide\+By\+Zero}]{}
+\end{DoxyParamCaption}
+)}\label{unitTests_8cpp_a0ec0e4fb4ff8f84b66192106507f7df1}
+
+
+References Math\+Function\+::divide().
+
+
+\begin{DoxyCode}
+17 \{
+18   \hyperlink{classMathFunction}{MathFunction} mathFuncion;
+19   
+20   ASSERT\_DEATH(mathFuncion.\hyperlink{classMathFunction_ad89df1337766a1314d65f581f070a8c0}{divide}(10,0), \textcolor{stringliteral}{"Error: Denominator is equal to zero"});
+21 \}
+\end{DoxyCode}

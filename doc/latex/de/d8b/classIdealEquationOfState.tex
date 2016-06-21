@@ -1,0 +1,117 @@
+\hypertarget{classIdealEquationOfState}{}\section{Ideal\+Equation\+Of\+State Class Reference}
+\label{classIdealEquationOfState}\index{Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}}
+
+
+The class of the ``ideal" equation of state\+: $p = \frac{\epsilon}{3}$.  
+
+
+
+
+{\ttfamily \#include $<$ideal\+Equation\+Of\+State.\+h$>$}
+
+
+
+Collaboration diagram for Ideal\+Equation\+Of\+State\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classIdealEquationOfState_ad3a68929f5709ef5e518b76a8f072f76}{calculate\+Pressure\+Density} (double)
+\begin{DoxyCompactList}\small\item\em Function that returns pressure density in function of entropy density \+: $p(s)$. \end{DoxyCompactList}\item 
+double \hyperlink{classIdealEquationOfState_a9d0a6954717185ba1c2957650fed544f}{calculate\+Energy\+Density} (double)
+\begin{DoxyCompactList}\small\item\em Function that returns energy density in function of entropy density \+: $\epsilon(s)$. \end{DoxyCompactList}\item 
+double \hyperlink{classIdealEquationOfState_a211e1d44f5f57c7ba73c3641c0750f65}{calculate\+Entropy\+Density} (double)
+\begin{DoxyCompactList}\small\item\em Function that returns entropy density in function of energy density \+: $s(\epsilon)$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The class of the ``ideal" equation of state\+: $p = \frac{\epsilon}{3}$. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classIdealEquationOfState_a9d0a6954717185ba1c2957650fed544f}{}\index{Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}!calculate\+Energy\+Density@{calculate\+Energy\+Density}}
+\index{calculate\+Energy\+Density@{calculate\+Energy\+Density}!Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}}
+\subsubsection[{calculate\+Energy\+Density}]{\setlength{\rightskip}{0pt plus 5cm}double Ideal\+Equation\+Of\+State\+::calculate\+Energy\+Density (
+\begin{DoxyParamCaption}
+\item[{double}]{Entropy\+Density}
+\end{DoxyParamCaption}
+)}\label{classIdealEquationOfState_a9d0a6954717185ba1c2957650fed544f}
+
+
+Function that returns energy density in function of entropy density \+: $\epsilon(s)$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entropy\+Density} & \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by T\+E\+S\+T().
+
+
+\begin{DoxyCode}
+14 \{
+15   \textcolor{keywordflow}{return} pow(EntropyDensity/2.43, 1.333333333);\textcolor{comment}{/*\_PI * \_PI * 47.5 * pow((15.0 * EntropyDensity)/(\_PI * \_PI 
+      * 47.5), 1.3333333333) / 30.0;*/}
+16 \}
+\end{DoxyCode}
+\hypertarget{classIdealEquationOfState_a211e1d44f5f57c7ba73c3641c0750f65}{}\index{Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}!calculate\+Entropy\+Density@{calculate\+Entropy\+Density}}
+\index{calculate\+Entropy\+Density@{calculate\+Entropy\+Density}!Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}}
+\subsubsection[{calculate\+Entropy\+Density}]{\setlength{\rightskip}{0pt plus 5cm}double Ideal\+Equation\+Of\+State\+::calculate\+Entropy\+Density (
+\begin{DoxyParamCaption}
+\item[{double}]{Energy\+Density}
+\end{DoxyParamCaption}
+)}\label{classIdealEquationOfState_a211e1d44f5f57c7ba73c3641c0750f65}
+
+
+Function that returns entropy density in function of energy density \+: $s(\epsilon)$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Energy\+Density} & \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by T\+E\+S\+T().
+
+
+\begin{DoxyCode}
+19 \{
+20   \textcolor{keywordflow}{return} 2.43 * pow(EnergyDensity, 0.75);
+21   \textcolor{comment}{/*\_PI * \_PI * 47.5 * pow((30.0 * EnergyDensity)/(\_PI * \_PI * 47.5), 0.75)/15.0;*/}
+22 \}
+\end{DoxyCode}
+\hypertarget{classIdealEquationOfState_ad3a68929f5709ef5e518b76a8f072f76}{}\index{Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}!calculate\+Pressure\+Density@{calculate\+Pressure\+Density}}
+\index{calculate\+Pressure\+Density@{calculate\+Pressure\+Density}!Ideal\+Equation\+Of\+State@{Ideal\+Equation\+Of\+State}}
+\subsubsection[{calculate\+Pressure\+Density}]{\setlength{\rightskip}{0pt plus 5cm}double Ideal\+Equation\+Of\+State\+::calculate\+Pressure\+Density (
+\begin{DoxyParamCaption}
+\item[{double}]{Entropy\+Density}
+\end{DoxyParamCaption}
+)}\label{classIdealEquationOfState_ad3a68929f5709ef5e518b76a8f072f76}
+
+
+Function that returns pressure density in function of entropy density \+: $p(s)$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entropy\+Density} & \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by T\+E\+S\+T().
+
+
+\begin{DoxyCode}
+9 \{
+10   \textcolor{keywordflow}{return} \hyperlink{classIdealEquationOfState_a9d0a6954717185ba1c2957650fed544f}{calculateEnergyDensity}(EntropyDensity)/3.0;\textcolor{comment}{/*\_PI * \_PI * 47.5 * pow((15.0 *
+       EntropyDensity)/(\_PI * \_PI * 47.5), 1.333333333) / 30.0;*/}
+11 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/rafael/\+Dropbox/sphene/src/\hyperlink{idealEquationOfState_8h}{ideal\+Equation\+Of\+State.\+h}\item 
+/\+Users/rafael/\+Dropbox/sphene/src/\hyperlink{idealEquationOfState_8cpp}{ideal\+Equation\+Of\+State.\+cpp}\end{DoxyCompactItemize}

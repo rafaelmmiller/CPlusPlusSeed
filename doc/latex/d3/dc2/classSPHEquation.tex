@@ -1,0 +1,116 @@
+\hypertarget{classSPHEquation}{}\section{S\+P\+H\+Equation Class Reference}
+\label{classSPHEquation}\index{S\+P\+H\+Equation@{S\+P\+H\+Equation}}
+
+
+{\ttfamily \#include $<$sph\+Equation.\+h$>$}
+
+
+
+Collaboration diagram for S\+P\+H\+Equation\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSPHEquation_ab29f7e9b98fdcf01862a726a9d88df21}{S\+P\+H\+Equation} ()
+\item 
+double \hyperlink{classSPHEquation_ad2a1ebcbb1261faecd765825de4c729c}{entropy\+Star} (\hyperlink{classSPHParticle}{S\+P\+H\+Particle}, vector$<$ \hyperlink{classSPHParticle}{S\+P\+H\+Particle} $>$, \hyperlink{classKernelFunction}{Kernel\+Function})
+\item 
+vector$<$ double $>$ \hyperlink{classSPHEquation_a066b5774351ec16e5500f2ff6b69d02e}{d\+Momentum\+\_\+d\+Tau} (\hyperlink{classSPHParticle}{S\+P\+H\+Particle}, vector$<$ \hyperlink{classSPHParticle}{S\+P\+H\+Particle} $>$, \hyperlink{classKernelFunction}{Kernel\+Function}, double)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSPHEquation_ab29f7e9b98fdcf01862a726a9d88df21}{}\index{S\+P\+H\+Equation@{S\+P\+H\+Equation}!S\+P\+H\+Equation@{S\+P\+H\+Equation}}
+\index{S\+P\+H\+Equation@{S\+P\+H\+Equation}!S\+P\+H\+Equation@{S\+P\+H\+Equation}}
+\subsubsection[{S\+P\+H\+Equation}]{\setlength{\rightskip}{0pt plus 5cm}S\+P\+H\+Equation\+::\+S\+P\+H\+Equation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSPHEquation_ab29f7e9b98fdcf01862a726a9d88df21}
+
+\begin{DoxyCode}
+6 \{
+7 
+8 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSPHEquation_a066b5774351ec16e5500f2ff6b69d02e}{}\index{S\+P\+H\+Equation@{S\+P\+H\+Equation}!d\+Momentum\+\_\+d\+Tau@{d\+Momentum\+\_\+d\+Tau}}
+\index{d\+Momentum\+\_\+d\+Tau@{d\+Momentum\+\_\+d\+Tau}!S\+P\+H\+Equation@{S\+P\+H\+Equation}}
+\subsubsection[{d\+Momentum\+\_\+d\+Tau}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ S\+P\+H\+Equation\+::d\+Momentum\+\_\+d\+Tau (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+P\+H\+Particle}}]{sph\+Particle, }
+\item[{vector$<$ {\bf S\+P\+H\+Particle} $>$}]{list\+Of\+Particles, }
+\item[{{\bf Kernel\+Function}}]{w, }
+\item[{double}]{tau}
+\end{DoxyParamCaption}
+)}\label{classSPHEquation_a066b5774351ec16e5500f2ff6b69d02e}
+
+
+References S\+P\+H\+Particle\+::entropy\+Density, S\+P\+H\+Particle\+::entropy\+Density\+Weight, S\+P\+H\+Particle\+::\+Gamma(), Kernel\+Function\+::kernel\+Gradient(), S\+P\+H\+Particle\+::position, and S\+P\+H\+Particle\+::pressure\+Density.
+
+
+
+Referenced by T\+E\+S\+T().
+
+
+\begin{DoxyCode}
+25 \{
+26   vector<double> result (2, 0.0);
+27   vector<double> r (2, 0.0);
+28 
+29   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < listOfParticles.size(); i++)
+30   \{
+31     r = sphParticle.\hyperlink{classSPHParticle_ac78fc2da202ad42875390dc4ad389d69}{position} - listOfParticles[i].position;
+32     result[0] += (sphParticle.\hyperlink{classSPHParticle_a6e6969476bac4b63b3b847cad236b2e3}{entropyDensityWeight} * listOfParticles[i].
+      entropyDensityWeight) * (sphParticle.\hyperlink{classSPHParticle_ac2ba30a4355e6ae7a4e4c4649f46f63a}{pressureDensity}/pow((sphParticle.\hyperlink{classSPHParticle_a64fe0b1c9b587542d60a2ab83606402d}{Gamma}() * sphParticle.
+      \hyperlink{classSPHParticle_a444f3b6a414b38d9bc0a59f129f3cc8c}{entropyDensity}), 2) + (listOfParticles[i].pressureDensity/pow((listOfParticles[i].Gamma() * 
+      listOfParticles[i].entropyDensity), 2))) * w.\hyperlink{classKernelFunction_af1d85508aa97180bd5a430cbd48e379d}{kernelGradient}(r)[0];
+33     result[1] += (sphParticle.\hyperlink{classSPHParticle_a6e6969476bac4b63b3b847cad236b2e3}{entropyDensityWeight} * listOfParticles[i].
+      entropyDensityWeight) * (sphParticle.\hyperlink{classSPHParticle_ac2ba30a4355e6ae7a4e4c4649f46f63a}{pressureDensity}/pow((sphParticle.\hyperlink{classSPHParticle_a64fe0b1c9b587542d60a2ab83606402d}{Gamma}() * sphParticle.
+      \hyperlink{classSPHParticle_a444f3b6a414b38d9bc0a59f129f3cc8c}{entropyDensity}), 2) + (listOfParticles[i].pressureDensity/pow((listOfParticles[i].Gamma() * 
+      listOfParticles[i].entropyDensity), 2))) * w.\hyperlink{classKernelFunction_af1d85508aa97180bd5a430cbd48e379d}{kernelGradient}(r)[1];
+34   \}
+35 
+36   \textcolor{keywordflow}{return} -(1/tau) * result;
+37 \}
+\end{DoxyCode}
+\hypertarget{classSPHEquation_ad2a1ebcbb1261faecd765825de4c729c}{}\index{S\+P\+H\+Equation@{S\+P\+H\+Equation}!entropy\+Star@{entropy\+Star}}
+\index{entropy\+Star@{entropy\+Star}!S\+P\+H\+Equation@{S\+P\+H\+Equation}}
+\subsubsection[{entropy\+Star}]{\setlength{\rightskip}{0pt plus 5cm}double S\+P\+H\+Equation\+::entropy\+Star (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+P\+H\+Particle}}]{sph\+Particle, }
+\item[{vector$<$ {\bf S\+P\+H\+Particle} $>$}]{list\+Of\+Particles, }
+\item[{{\bf Kernel\+Function}}]{w}
+\end{DoxyParamCaption}
+)}\label{classSPHEquation_ad2a1ebcbb1261faecd765825de4c729c}
+\+: list of S\+P\+H\+Particles, \hyperlink{classKernelFunction}{Kernel\+Function} (x-\/x\+\_\+j) 
+
+References Kernel\+Function\+::kernel\+Function(), and S\+P\+H\+Particle\+::position.
+
+
+
+Referenced by T\+E\+S\+T().
+
+
+\begin{DoxyCode}
+11 \{
+12   \textcolor{keywordtype}{double} \hyperlink{classSPHEquation_ad2a1ebcbb1261faecd765825de4c729c}{entropyStar} = 0.0;
+13   vector<double> r (2, 0.0);
+14 
+15   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < listOfParticles.size(); i++)
+16   \{
+17     r = sphParticle.\hyperlink{classSPHParticle_ac78fc2da202ad42875390dc4ad389d69}{position} - listOfParticles[i].position;
+18     entropyStar += listOfParticles[i].entropyDensityWeight * w.\hyperlink{classKernelFunction_af6b299411c5cf913c03b919f9f691fa7}{kernelFunction}(r);
+19   \}
+20 
+21   \textcolor{keywordflow}{return} \hyperlink{classSPHEquation_ad2a1ebcbb1261faecd765825de4c729c}{entropyStar};
+22 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/rafael/\+Dropbox/sphene/src/\hyperlink{sphEquation_8h}{sph\+Equation.\+h}\item 
+/\+Users/rafael/\+Dropbox/sphene/src/\hyperlink{sphEquation_8cpp}{sph\+Equation.\+cpp}\end{DoxyCompactItemize}
